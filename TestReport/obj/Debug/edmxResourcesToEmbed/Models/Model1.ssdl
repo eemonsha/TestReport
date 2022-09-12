@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerInfos">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
+    <Property Name="CustomarPhn" Type="nvarchar(max)" />
+    <Property Name="CustomerArea" Type="nvarchar(max)" />
+    <Property Name="CustomarAddress" Type="nvarchar(max)" />
+    <Property Name="CustomerEmail" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductTittle" Type="nvarchar(max)" />
+    <Property Name="ProductCode" Type="nvarchar(max)" />
+    <Property Name="SalesPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="InitialProductStockQty" Type="int" Nullable="false" />
+    <Property Name="RemainingQty" Type="int" Nullable="false" />
+    <Property Name="QRId" Type="int" Nullable="false" />
+    <Property Name="PPicture" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="QRs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemCode" Type="int" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="PriceAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="QrImage" Type="varbinary(max)" />
+    <Property Name="QrCategory" Type="nvarchar(max)" />
+    <Property Name="QrQty" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="SaleID" />
+    </Key>
+    <Property Name="SaleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="SubTotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CashAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CardAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MobilebankingAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GiftAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Vat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesProducts">
+    <Key>
+      <PropertyRef Name="SalesProID" />
+    </Key>
+    <Property Name="SalesProID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SaleID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="OrderQty" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Pvat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PDiscount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Returnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="PassWord" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="TestModelStoreContainer">
+    <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerInfos" EntityType="Self.CustomerInfos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QRs" EntityType="Self.QRs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesProducts" EntityType="Self.SalesProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
