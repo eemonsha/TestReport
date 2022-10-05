@@ -116,6 +116,52 @@ namespace TestReport.Controllers
 
 
 
+        //scorewise student report
+        public ActionResult StudentScore()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult StudentScore(int min, int max)
+        {
+
+
+            var rrpt = new ReportDocument();
+            rrpt.Load(Path.Combine(Server.MapPath("~/Reports/Scorewisestudent.rpt")));
+            SqlConnection con = new SqlConnection(@"Data Source=103.95.98.190,49170;Initial Catalog=Test;User ID=emon;Password=TestProject123;");
+            SqlCommand cmd = new SqlCommand("Select * from Users ", con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataSet dt = new DataSet();
+            sda.Fill(dt);
+
+            rrpt.SetDataSource(dt);
+            rrpt.SetDatabaseLogon("emon", "TestProject123", "103.95.98.190,49170", "Test");
+            rrpt.SetParameterValue("min", min);
+            rrpt.SetParameterValue("max", max);
+
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+            try
+            {
+                Stream stream = rrpt.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                return File(stream, "application/pdf", "" + min + " " + DateTime.Now + " - _QRCodes.pdf");
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
+
         private string GetConStr()
         {
             var conn = @"Data Source=103.95.98.190,49170;Initial Catalog=Test;User ID=emon;Password=TestProject123";
@@ -126,3 +172,5 @@ namespace TestReport.Controllers
 
     }
 }
+
+

@@ -1,0 +1,66 @@
+﻿@*<h2>Student In Score Wise</h2>*@
+<html>
+
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <title></title>
+</head>
+
+
+
+@*<form method="post" action="~/Rep/StudentScore">
+        <div class="form-group align-items-center">
+            <div class="col-4 my-1">
+                <label for="date">Score Range:</label><br>
+                <div class="d-flex">
+                    <input class="form-control" type="text" name="Formdate" value="" id="minsc" />TO
+                    <input class="form-control" type="text" name="Todate" value="" id="maxsc" />
+                </div>
+            </div>
+
+            <div class="col-auto my-1">
+                <input type="submit" class="btn btn-primary" id="submitbtn" value="Submit">
+            </div>
+        </div>
+    </form>*@
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="text-danger">Search</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="post" action="~/Report/StudentScore">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Minimum score : </label>
+                                <input type="text" name="min" class="form-control" id="min" />
+                                <span style="padding:10px;"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Maximum score : </label>
+                                <input type="text" name="max" class="form-control" id="max" />
+                                <span style="padding:10px;"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <div>
+                                    <button type="submit" class="btn btn-success btn-sm">Search</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>   
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
